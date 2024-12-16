@@ -116,8 +116,8 @@ function draw() {
     noFill();
     stroke(0, 255, 0);
     textSize(18);
-    text('동물', indexX + 10, indexY);
-    text('사랑', thumbX + 10, thumbY);
+    text('Animal', indexX + 10, indexY);
+    text('Love', thumbX + 10, thumbY);
 
     // 두 손가락 간의 거리 계산
     let distance = dist(indexX, indexY, thumbX, thumbY);
@@ -129,8 +129,8 @@ function draw() {
     fill(isGrabbing ? 'green' : 'white');
     noStroke();
     textSize(18);
-    text('동물', indexX + 10, indexY);
-    text('사랑', thumbX + 10, thumbY);
+    text('Animal', indexX + 10, indexY);
+    text('Love', thumbX + 10, thumbY);
 
     // 뽑는 상태일 때 이모티콘 잡기
     if (isGrabbing) {
@@ -181,17 +181,17 @@ function draw() {
   // 남은 동물 개수와 시간 표시
   fill(0);
   textAlign(CENTER, TOP);
-  textSize(24);
-  text(`남은 동물 개수: ${animalCount}`, width / 2, 20);
-  text(`수집하는 데 걸린 시간: ${minutes}:${seconds}`, width / 2, 50);
+  textSize(20);
+  text(`Number of animals left: ${animalCount}`, width / 2, 20);
+  text(`Time spent collecting: ${minutes}:${seconds}`, width / 2, 50);
 
   // 모든 동물을 뽑으면 멈추기
   if (animalCount === 0) {
     noLoop();
     fill(255);
-    textWidth(5);
-    textSize(50);
-    text('사랑스러운 동물들은 다 내꺼!', width / 2, height / 2);
+    textWidth(10);
+    textSize(70);
+    text('All lovely animals are mine!♥', width / 2, height / 2);
   }
 }
 
