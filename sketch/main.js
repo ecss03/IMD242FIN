@@ -37,7 +37,7 @@ let isGrabbing = false;
 let grabbedAnimal = null;
 let startTime;
 let timeElapsed = 0;
-let animalCount = 15;
+let animalCount = 20;
 
 function preload() {
   handPose = ml5.handPose({ flipped: true });
@@ -72,8 +72,8 @@ function setup() {
   video.hide();
 
   handPose.detectStart(video, gotHands);
-  // 15개의 랜덤 동물 이모티콘을 생성, 배열에 저장
-  for (let i = 0; i < 15; i++) {
+  // 20개의 랜덤 동물 이모티콘을 생성, 배열에 저장
+  for (let i = 0; i < 20; i++) {
     const animal = random(animals);
     const x = random(width);
     const y = random(height);
@@ -93,7 +93,7 @@ function draw() {
 
   // 랜덤 동물 이모티콘을 화면에 표시
   randomAnimals.forEach((animalData) => {
-    textSize(50);
+    textSize(70);
 
     text(animalData.animal, animalData.x, animalData.y); // 동물 이모티콘을 화면에 그리기
   });
@@ -132,7 +132,7 @@ function draw() {
     text('동물', indexX + 10, indexY);
     text('사랑', thumbX + 10, thumbY);
 
-    // 뽑는 상태일 때 이모티콘 잡기8
+    // 뽑는 상태일 때 이모티콘 잡기
     if (isGrabbing) {
       // 동물 이모티콘 중 손가락 위치에 가까운 것을 찾기
       randomAnimals.forEach((animalData) => {
@@ -144,8 +144,8 @@ function draw() {
 
       // 잡힌 동물 이모티콘 좌표를 두 손가락 사이의 중간 지점으로 이동
       if (grabbedAnimal) {
-        let midX = (indexX + thumbX) / 2; // 두 손가락 사이의 중간 X
-        let midY = (indexY + thumbY) / 2; // 두 손가락 사이의 중간 Y
+        let midX = (indexX + thumbX) / 2;
+        let midY = (indexY + thumbY) / 2;
         grabbedAnimal.x = midX;
         grabbedAnimal.y = midY;
 
@@ -183,12 +183,14 @@ function draw() {
   textAlign(CENTER, TOP);
   textSize(24);
   text(`남은 동물 개수: ${animalCount}`, width / 2, 20);
-  text(`다 먹는 데 걸린 시간: ${minutes}:${seconds}`, width / 2, 50);
+  text(`수집하는 데 걸린 시간: ${minutes}:${seconds}`, width / 2, 50);
 
   // 모든 동물을 뽑으면 멈추기
   if (animalCount === 0) {
     noLoop();
-    textSize(32);
+    fill(255);
+    textWidth(5);
+    textSize(50);
     text('사랑스러운 동물들은 다 내꺼!', width / 2, height / 2);
   }
 }
